@@ -29,12 +29,12 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 
 app.use((err, req, res, next) =>  {
-    const statuscode =err.statuscode || 500;
+    const statusCode =err.statusCode || 500;
     const message = err.message || 'Something went wrong';
-    res.status(statuscode).json({
+    res.status(statusCode).json({
         
         success: false,
-        statuscode,
+        statusCode,
          message,
         });
           
