@@ -1,5 +1,6 @@
+@import 'flowbite/dist/flowbite.css'; /* Import first */
+
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import 'flowbite/dist/flowbite.css'; /* Correct import for Flowbite */
