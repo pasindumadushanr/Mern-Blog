@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Alert, Button, TextInput } from "flowbite-react";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+=======
+import { Button, TextInput } from "flowbite-react";
+>>>>>>> 314ddcbab6280c77b7f93d9e6ba1bdcbc716a569
 import { useEffect, useRef,useState } from "react";
 import {useSelector} from "react-redux";
 import { app } from "../firebase";
@@ -34,6 +38,7 @@ export default function DashProfile() {
     );
 
     const uploadImage = async () => {
+<<<<<<< HEAD
 
 
 
@@ -66,6 +71,11 @@ export default function DashProfile() {
   }
 );
     };
+=======
+      
+       console.log("uploading image.....");
+    }
+>>>>>>> 314ddcbab6280c77b7f93d9e6ba1bdcbc716a569
 
 
 
