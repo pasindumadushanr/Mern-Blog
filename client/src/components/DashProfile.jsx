@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import { app } from "../firebase";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { set } from "mongoose";
 
 export default function DashProfile() {
     const {currentUser} = useSelector(state => state.user);
@@ -13,6 +14,7 @@ export default function DashProfile() {
     const filePickerRef = useRef();
     const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
     const [imageFileUploadError, setImageFileUploadError] = useState(null);
+    const [formData, setFormData] = useState({});  
    //complete the handleImageChange function
     const handleImageChange = (e) => {
 
@@ -61,6 +63,7 @@ export default function DashProfile() {
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         setImageFileUrl(downloadURL);
+        setFormData({ ...formData, profilePicture: downloadURL });
       }
     );
   }
@@ -68,7 +71,11 @@ export default function DashProfile() {
     };
 
 
-
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value
+    });
+  };
+  console.log(formData);
 
   return (
     <div className="max-w-lg mx-auto p-3 w-full">
@@ -121,9 +128,28 @@ export default function DashProfile() {
 
 
             
-            <TextInput type="text" id='username' placeholder="username" defaultValue={currentUser.username} />
-            <TextInput type="email" id='email' placeholder="email" defaultValue={currentUser.email} />
-            <TextInput type="password" id='password' placeholder="password"  />
+            <TextInput 
+            type="text" 
+            id='username' 
+            placeholder="username" 
+            defaultValue={currentUser.username}  
+            onChange={handleChange}
+            />
+
+            <TextInput 
+            type="email" 
+            id='email' 
+            placeholder="email" 
+            defaultValue={currentUser.email} 
+            onChange={handleChange}
+            />
+
+            <TextInput 
+            type="password" 
+            id='password' 
+            placeholder="password"  
+            onChange={handleChange}
+            />
             
             <Button type="submit" gradientDuoTone="purpleToBlue" outline>
                 Update Your Profile
