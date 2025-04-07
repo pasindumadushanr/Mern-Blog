@@ -6,7 +6,7 @@ import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
-
+//test
 // Connect to MongoDB
 mongoose
 .connect(process.env.MONGO)
